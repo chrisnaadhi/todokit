@@ -1,7 +1,19 @@
 <script>
-    let userName = "chrisnaadhi"
+    import ToDoItem from '$lib/ToDoItem.svelte';
+
+    const title = "Todo";
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>It was your {userName}!</p>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<svelte:head>
+    <title>{title} | New</title>
+</svelte:head>
+
+<h1>{title} List</h1>
+
+<form action="" method="">
+    <input type="text" name="todo" aria-label="Add a Todo Item" placeholder="+ tap to add a todo">
+</form>
+
+<ToDoItem />
+<ToDoItem />
+<ToDoItem />
