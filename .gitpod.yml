@@ -16,6 +16,7 @@ vscode:
   extensions:
     - dbaeumer.vscode-eslint
     - svelte.svelte-vscode
+    - esbenp.prettier-vscode
 
 github:
   prebuilds:
