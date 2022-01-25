@@ -1,11 +1,12 @@
 <script lang="ts">
     export let todo: Todo;
+    const done = todo.done;
 </script>
 
-<div class="todo">
-    <form action="" method="">
-        <input type="hidden" name="done" value="">
-        <button aria-label="Mark Done or Not Done" class="toggle"></button>
+<div class="todo" class:done>
+    <form action="/todos/{todo.uid}.json?_method=PATCH" method="post">
+        <input type="hidden" name="done" value="{todo.done ? '' : 'true'}">
+        <button aria-label="Mark Done as {todo.done ? 'Not Done' : 'Done'}" class="toggle"></button>
     </form>
 
     <form action="/todos/{todo.uid}.json?_method=PATCH" method="post" class="text">
@@ -85,7 +86,7 @@
         opacity: 1;
     }
 
-    /* Uncomment when API is ready
+    /* Uncomment when API is ready */
     
     .done {
         transform: none;
@@ -95,5 +96,5 @@
 
     .done .toggle {
         background-image: url("data:image/svg+xml,%3Csvg width='22' height='16' viewBox='0 0 22 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.5 1.5L7.4375 14.5L1.5 8.5909' stroke='%23676778' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    } */
+    }
 </style>
