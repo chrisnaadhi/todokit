@@ -1,5 +1,9 @@
 <script lang="ts">
+    import { enhance } from "$lib/actions/form";
+
     export let todo: Todo;
+    export let processDeletedTodoResult: (res: Response) => void;
+    export let processUpdateTodoResult: (res: Response) => void;
     const done = todo.done;
 </script>
 
@@ -9,12 +13,12 @@
         <button aria-label="Mark Done as {todo.done ? 'Not Done' : 'Done'}" class="toggle"></button>
     </form>
 
-    <form action="/todos/{todo.uid}.json?_method=PATCH" method="post" class="text">
+    <form action="/todos/{todo.uid}.json?_method=PATCH" method="post" class="text" use:enhance={{ result: processUpdateTodoResult }}>
         <input type="text" name="text" id="" value="{todo.text}">
         <button aria-label="Save Todo" class="save"></button>
     </form>
 
-    <form action="/todos/{todo.uid}.json?_method=DELETE" method="post">
+    <form action="/todos/{todo.uid}.json?_method=DELETE" method="post" use:enhance={{ result: processDeletedTodoResult }}>
         <button aria-label="Delete a todo" class="delete"></button>
     </form>
 </div>
