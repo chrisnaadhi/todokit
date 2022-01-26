@@ -7,7 +7,6 @@ export const get: RequestHandler = (request) => {
 
 export const post: RequestHandler<{}, FormData> = (request) => {
     return api(request, {
-        uid: `${Date.now()}`, // TODO: Replace the UID based on UUID Package
         created_at: new Date(),
         text: request.body.get("todo"),
         done: false
