@@ -34,13 +34,13 @@
         form.reset();
     }
 
-    const processUpdateTodoResult = async (res: Response) => {
+    const processUpdatedTodoResult = async (res: Response) => {
         const updatedTodo = await res.json();
         todos = todos.map(t => {
             if (t.uid === updatedTodo.uid) return updatedTodo;
-            return t;
-        })
-    }
+        return t;
+    })
+  };
 </script>
 
 <svelte:head>
@@ -69,7 +69,7 @@
                 todos = todos.filter(t => t.uid !== todo.uid);
             }}
 
-            {processUpdateTodoResult}
+            {processUpdatedTodoResult}
         />
     {/each}
 </div>

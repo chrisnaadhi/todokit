@@ -3,17 +3,16 @@
 
     export let todo: Todo;
     export let processDeletedTodoResult: (res: Response) => void;
-    export let processUpdateTodoResult: (res: Response) => void;
-    const done = todo.done;
+    export let processUpdatedTodoResult: (res: Response) => void;
 </script>
 
-<div class="todo" class:done>
-    <form action="/todos/{todo.uid}.json?_method=PATCH" method="post">
+<div class="todo" class:done={todo.done}>
+    <form action="/todos/{todo.uid}.json?_method=PATCH" method="post" use:enhance={{ result: processUpdatedTodoResult }}>
         <input type="hidden" name="done" value="{todo.done ? '' : 'true'}">
         <button aria-label="Mark Done as {todo.done ? 'Not Done' : 'Done'}" class="toggle"></button>
     </form>
 
-    <form action="/todos/{todo.uid}.json?_method=PATCH" method="post" class="text" use:enhance={{ result: processUpdateTodoResult }}>
+    <form action="/todos/{todo.uid}.json?_method=PATCH" method="post" class="text" use:enhance={{ result: processUpdatedTodoResult }}>
         <input type="text" name="text" id="" value="{todo.text}">
         <button aria-label="Save Todo" class="save"></button>
     </form>
