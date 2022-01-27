@@ -55,7 +55,7 @@
     }}>
         <input
             type="text"
-            name="todo"
+            name="text"
             aria-label="Add a Todo Item"
             placeholder="+ tap to add a todo"
         />
